@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Productos en existencia
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+
+  <ion-list>
+
+    <div *ngFor = "let product of products; index as i">
+      <ion-item *ngIf= "product.active">
+        <ion-label>{{product.name}}</ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
+
+
+</ion-content>

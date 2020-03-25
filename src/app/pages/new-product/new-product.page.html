@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nuevo</ion-title>
+
+    <ion-buttons slot="start">
+
+      <ion-back-button></ion-back-button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form class="ion-padding" [formGroup]="myForm">
+    <ion-list>
+
+      <ion-item>
+        <ion-label position='floating'>Nombre</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="myForm.get('name').errors && (myForm.get('name'
+      ).dirty || myForm.get('name').touched || submitted)">
+        <ion-label color="danger">Nombre de producto erroneo</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position='floating'>Precio</ion-label>
+        <ion-input type="text" formControlName="cost"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="myForm.get('cost').errors && (myForm.get('cost'
+      ).dirty || myForm.get('cost').touched || submitted)">
+        <ion-label color="danger">Costo de producto erroneo</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position='floating'>Img</ion-label>
+        <ion-input type="text" formControlName="img"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="myForm.get('img').errors && (myForm.get('img'
+      ).dirty || myForm.get('img').touched || submitted)">
+        <ion-label color="danger">Imagen de producto erronea</ion-label>
+      </ion-item>
+
+
+    </ion-list>
+
+    <ion-button (click)="saveProduct()" expand="block"  shape="round">
+     Guardar producto
+    </ion-button>
+
+  </form>
+
+</ion-content>

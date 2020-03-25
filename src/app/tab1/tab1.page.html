@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Todos los productos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Buscar</ion-label>
+      <ion-input type="text" [(ngModel)]="search" (keyup)="filter()"></ion-input>
+    </ion-item>
+
+    <div *ngFor="let product of products; index as i">
+      <ion-item-sliding (ionSwipe)="operation(i, $event)">
+        <ion-item  (click)="view(product)"  >
+          <ion-label >{{product.name}}</ion-label>
+
+          <ion-chip color="success" *ngIf="product.active">
+            <ion-label>Existentes</ion-label>
+          </ion-chip>
+          <ion-chip color="danger" *ngIf="!product.active">
+            <ion-label>NO Existentes</ion-label>
+          </ion-chip>
+        </ion-item>
+
+        <ion-item-options side="start">
+        </ion-item-options>
+        <ion-item-options side="end">
+        </ion-item-options>
+
+      </ion-item-sliding>
+    </div>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color = "success" (click) = "newProduct()">
+        <ion-icon name="checkbox-sharp"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+</ion-fab>
+
+</ion-content>
